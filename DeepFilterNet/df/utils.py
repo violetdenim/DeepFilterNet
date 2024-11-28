@@ -20,10 +20,11 @@ from df.model import ModelParams
 def get_device():
     s = config("DEVICE", default="", section="train")
     if s == "":
-        if torch.cuda.is_available():
-            DEVICE = torch.device("cuda:0")
-        else:
-            DEVICE = torch.device("cpu")
+    #     if torch.cuda.is_available():
+    #         DEVICE = torch.device("cuda:0")
+    #     else:
+    #         DEVICE = torch.device("cpu")
+        DEVICE = torch.get_default_device()
     else:
         DEVICE = torch.device(s)
     return DEVICE
